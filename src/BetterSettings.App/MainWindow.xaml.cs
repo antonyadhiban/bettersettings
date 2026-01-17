@@ -7,6 +7,7 @@ using Windows.Graphics;
 using Windows.System;
 using WinRT.Interop;
 using BetterSettings.App.Models;
+using System.Runtime.InteropServices;
 
 namespace BetterSettings.App;
 
@@ -51,6 +52,9 @@ public sealed partial class MainWindow : Window
 
     public void ShowWindow()
     {
+        // Re-center before showing
+        CenterWindow(580, 420);
+
         var hwnd = WindowNative.GetWindowHandle(this);
         Win32.ShowWindow(hwnd, Win32.SW_SHOW);
         Win32.SetForegroundWindow(hwnd);
@@ -68,15 +72,22 @@ public sealed partial class MainWindow : Window
         var windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
         _appWindow = AppWindow.GetFromWindowId(windowId);
         _appWindow.Title = "BetterSettings";
-        _appWindow.Resize(new SizeInt32(640, 420));
 
-        // Remove title bar for cleaner look
-        if (_appWindow.Presenter is OverlappedPresenter presenter)
-        {
-            presenter.IsResizable = false;
-            presenter.IsMaximizable = false;
-            presenter.IsMinimizable = false;
-        }
+        // Get the presenter and configure for borderless look
+        var presenter = OverlappedPresenter.Create();
+        presenter.IsResizable = false;
+        presenter.IsMaximizable = false;
+        presenter.IsMinimizable = false;
+        presenter.SetBorderAndTitleBar(false, false);
+        _appWindow.SetPresenter(presenter);
+
+        // Set window size and position
+        var windowWidth = 580;
+        var windowHeight = 420;
+        _appWindow.Resize(new SizeInt32(windowWidth, windowHeight));
+
+        // Center on primary display, slightly above center
+        CenterWindow(windowWidth, windowHeight);
 
         _appWindow.Closing += (_, e) =>
         {
@@ -86,6 +97,22 @@ public sealed partial class MainWindow : Window
                 HideWindow();
             }
         };
+    }
+
+    private void CenterWindow(int width, int height)
+    {
+        var displayArea = DisplayArea.GetFromWindowId(
+            Win32Interop.GetWindowIdFromWindow(WindowNative.GetWindowHandle(this)),
+            DisplayAreaFallback.Primary);
+
+        if (displayArea != null)
+        {
+            var workArea = displayArea.WorkArea;
+            var centerX = (workArea.Width - width) / 2 + workArea.X;
+            // Slightly above center (30% from top instead of 50%)
+            var centerY = (int)((workArea.Height - height) * 0.30) + workArea.Y;
+            _appWindow?.Move(new PointInt32(centerX, centerY));
+        }
     }
 
     private void Root_KeyDown(object sender, KeyRoutedEventArgs e)

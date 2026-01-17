@@ -9,6 +9,7 @@ namespace BetterSettings.App;
 public sealed class MainViewModel : INotifyPropertyChanged
 {
     private readonly HybridSearchService _searchService;
+    private readonly SettingsService? _settingsService;
     private readonly DispatcherQueue _dispatcher;
     private readonly DispatcherQueueTimer _debounceTimer;
 
@@ -16,9 +17,10 @@ public sealed class MainViewModel : INotifyPropertyChanged
     private SearchResult? _selectedResult;
     private string _statusMessage = string.Empty;
 
-    public MainViewModel(HybridSearchService searchService)
+    public MainViewModel(HybridSearchService searchService, SettingsService? settingsService = null)
     {
         _searchService = searchService;
+        _settingsService = settingsService;
         _dispatcher = DispatcherQueue.GetForCurrentThread();
 
         Results = new ObservableCollection<SearchResult>();
@@ -34,6 +36,8 @@ public sealed class MainViewModel : INotifyPropertyChanged
     }
 
     public ObservableCollection<SearchResult> Results { get; }
+
+    public bool IsDetailedMode => _settingsService?.DisplayMode == DisplayMode.Detailed;
 
     public string Query
     {
@@ -114,6 +118,14 @@ public sealed class MainViewModel : INotifyPropertyChanged
     {
         Query = string.Empty;
         StatusMessage = string.Empty;
+    }
+
+    public void NotifyDisplayModeChanged()
+    {
+        _dispatcher.TryEnqueue(() =>
+        {
+            OnPropertyChanged(nameof(IsDetailedMode));
+        });
     }
 
     private void RestartDebounce()

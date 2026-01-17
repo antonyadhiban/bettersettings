@@ -4,49 +4,53 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:models="using:BetterSettings.App.Models">
 
-    <Grid x:Name="Root" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" KeyDown="Root_KeyDown">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <Border 
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+        CornerRadius="12"
+        BorderThickness="0">
+        <Grid x:Name="Root" KeyDown="Root_KeyDown">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-        <!-- Search Box -->
-        <Grid Grid.Row="0" Padding="16,16,16,8">
-            <TextBox 
-                x:Name="SearchBox"
-                PlaceholderText="Search Windows settings..."
-                Text="{x:Bind ViewModel.Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                FontSize="18"
-                Padding="12,10"
-                BorderThickness="0"
-                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                CornerRadius="8" />
-        </Grid>
+            <!-- Search Box -->
+            <Grid Grid.Row="0" Padding="16,16,16,8">
+                <TextBox 
+                    x:Name="SearchBox"
+                    PlaceholderText="Search Windows settings..."
+                    Text="{x:Bind ViewModel.Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    FontSize="16"
+                    Padding="12,10"
+                    BorderThickness="0"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    CornerRadius="8" />
+            </Grid>
 
-        <!-- Results List -->
-        <ListView 
-            Grid.Row="1"
-            x:Name="ResultsList"
-            ItemsSource="{x:Bind ViewModel.Results, Mode=OneWay}"
-            SelectedItem="{x:Bind ViewModel.SelectedResult, Mode=TwoWay}"
-            SelectionMode="Single"
-            Padding="8,0,8,8"
-            IsItemClickEnabled="True"
-            ItemClick="ResultsList_ItemClick">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="Padding" Value="0" />
-                    <Setter Property="Margin" Value="0,2" />
-                    <Setter Property="CornerRadius" Value="6" />
-                </Style>
-            </ListView.ItemContainerStyle>
+            <!-- Results List -->
+            <ListView 
+                Grid.Row="1"
+                x:Name="ResultsList"
+                ItemsSource="{x:Bind ViewModel.Results, Mode=OneWay}"
+                SelectedItem="{x:Bind ViewModel.SelectedResult, Mode=TwoWay}"
+                SelectionMode="Single"
+                Padding="8,0,8,8"
+                IsItemClickEnabled="True"
+                ItemClick="ResultsList_ItemClick">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="Margin" Value="0,1" />
+                        <Setter Property="CornerRadius" Value="6" />
+                    </Style>
+                </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:SearchResult">
                     <Grid Opacity="{x:Bind Opacity}">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4" />
+                            <ColumnDefinition Width="3" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
@@ -59,46 +63,59 @@
                             Visibility="{x:Bind IsStrongMatch}" />
 
                         <!-- Content -->
-                        <Grid Grid.Column="1" Padding="12,8,12,8">
+                        <Grid Grid.Column="1" Padding="10,6,12,6">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="28" />
+                                <ColumnDefinition Width="22" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
                             <!-- Icon -->
                             <FontIcon 
                                 Grid.Column="0"
                                 Glyph="&#xE713;"
-                                FontSize="16"
-                                VerticalAlignment="Top"
-                                Margin="0,2,0,0"
+                                FontSize="14"
+                                VerticalAlignment="Center"
                                 Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
 
                             <!-- Main content -->
-                            <StackPanel Grid.Column="1" Spacing="3">
-                                <!-- Title -->
-                                <TextBlock 
-                                    Text="{x:Bind Item.DisplayName}" 
-                                    FontSize="14"
-                                    FontWeight="SemiBold"
-                                    TextTrimming="CharacterEllipsis" />
+                            <StackPanel Grid.Column="1" Spacing="1">
+                                <!-- Title + Breadcrumbs on same line -->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <TextBlock 
+                                        Grid.Column="0"
+                                        Text="{x:Bind Item.DisplayName}" 
+                                        FontSize="13"
+                                        FontWeight="SemiBold"
+                                        TextTrimming="CharacterEllipsis"
+                                        VerticalAlignment="Center" />
+                                    
+                                    <!-- Breadcrumbs inline separator -->
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock 
+                                            Text="›"
+                                            FontSize="11"
+                                            Opacity="0.4"
+                                            Margin="6,0,4,0" />
+                                        <TextBlock 
+                                            Text="{x:Bind Item.Breadcrumbs}"
+                                            FontSize="11"
+                                            Opacity="0.5"
+                                            TextTrimming="CharacterEllipsis" />
+                                    </StackPanel>
+                                </Grid>
 
-                                <!-- Breadcrumbs -->
-                                <TextBlock 
-                                    FontSize="11"
-                                    Opacity="0.7"
-                                    TextTrimming="CharacterEllipsis">
-                                    <Run Text="{x:Bind Item.Breadcrumbs}" />
-                                </TextBlock>
-
-                                <!-- Description (if available) -->
+                                <!-- Description (shown when match hint not visible) -->
                                 <TextBlock 
                                     Text="{x:Bind Item.Description}"
                                     FontSize="11"
                                     Opacity="0.5"
                                     TextTrimming="CharacterEllipsis"
-                                    Visibility="{x:Bind HasDescription}" />
+                                    Visibility="{x:Bind ShowDescription}" />
 
                                 <!-- Match hint (for synonym matches) -->
                                 <TextBlock 
@@ -109,47 +126,43 @@
                                     Foreground="{ThemeResource AccentTextFillColorSecondaryBrush}"
                                     Visibility="{x:Bind IsSynonymMatch}" />
                             </StackPanel>
-
-                            <!-- Right side: availability or match indicator -->
-                            <StackPanel Grid.Column="2" VerticalAlignment="Center" Spacing="4">
-                                <TextBlock 
-                                    Text="{x:Bind AvailabilityText}"
-                                    FontSize="10"
-                                    Opacity="0.5"
-                                    HorizontalAlignment="Right" />
-                            </StackPanel>
                         </Grid>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+            </ListView>
 
-        <!-- Status Bar -->
-        <Grid Grid.Row="2" Padding="16,8,16,12" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+            <!-- Status Bar -->
+            <Border Grid.Row="2" 
+                    Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                    CornerRadius="0,0,12,12">
+                <Grid Padding="16,8,16,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-            <TextBlock 
-                Grid.Column="0"
-                x:Name="StatusText"
-                Text="{x:Bind ViewModel.StatusMessage, Mode=OneWay}"
-                FontSize="11"
-                Opacity="0.7"
-                VerticalAlignment="Center" />
+                    <TextBlock 
+                        Grid.Column="0"
+                        x:Name="StatusText"
+                        Text="{x:Bind ViewModel.StatusMessage, Mode=OneWay}"
+                        FontSize="10"
+                        Opacity="0.7"
+                        VerticalAlignment="Center" />
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="16">
-                <TextBlock FontSize="11" Opacity="0.5" VerticalAlignment="Center">
-                    <Run Text="↑↓"/> Navigate
-                </TextBlock>
-                <TextBlock FontSize="11" Opacity="0.5" VerticalAlignment="Center">
-                    <Run Text="↵"/> Open
-                </TextBlock>
-                <TextBlock FontSize="11" Opacity="0.5" VerticalAlignment="Center">
-                    <Run Text="Esc"/> Hide
-                </TextBlock>
-            </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="12">
+                        <TextBlock FontSize="10" Opacity="0.5" VerticalAlignment="Center">
+                            <Run Text="↑↓"/> Navigate
+                        </TextBlock>
+                        <TextBlock FontSize="10" Opacity="0.5" VerticalAlignment="Center">
+                            <Run Text="↵"/> Open
+                        </TextBlock>
+                        <TextBlock FontSize="10" Opacity="0.5" VerticalAlignment="Center">
+                            <Run Text="Esc"/> Hide
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Border>
         </Grid>
-    </Grid>
+    </Border>
 </Window>

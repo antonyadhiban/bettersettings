@@ -41,6 +41,9 @@ public sealed class SearchResult
 
     // Helper for visibility: has breadcrumbs
     public bool HasBreadcrumbs => !string.IsNullOrEmpty(Item.Breadcrumbs);
+
+    // Show description only when there's no match hint showing
+    public bool ShowDescription => HasDescription && !IsSynonymMatch;
 }
 
 public enum MatchKind
