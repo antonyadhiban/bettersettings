@@ -8,7 +8,7 @@ namespace BetterSettings.App;
 
 public sealed class MainViewModel : INotifyPropertyChanged
 {
-    private readonly SearchService _searchService;
+    private readonly HybridSearchService _searchService;
     private readonly DispatcherQueue _dispatcher;
     private readonly DispatcherQueueTimer _debounceTimer;
 
@@ -16,7 +16,7 @@ public sealed class MainViewModel : INotifyPropertyChanged
     private SearchResult? _selectedResult;
     private string _statusMessage = string.Empty;
 
-    public MainViewModel(SearchService searchService)
+    public MainViewModel(HybridSearchService searchService)
     {
         _searchService = searchService;
         _dispatcher = DispatcherQueue.GetForCurrentThread();

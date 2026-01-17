@@ -14,8 +14,11 @@ public sealed class AppShell : IDisposable
     // Services
     private CatalogLoader? _catalogLoader;
     private PlatformService? _platformService;
+    private SettingsDiscoveryService? _discoveryService;
+    private IndexCacheService? _cacheService;
     private IndexStore? _indexStore;
-    private SearchService? _searchService;
+    private EmbeddingService? _embeddingService;
+    private HybridSearchService? _searchService;
     private LaunchService? _launchService;
     private MainViewModel? _viewModel;
 
@@ -29,8 +32,15 @@ public sealed class AppShell : IDisposable
         // Initialize services
         _catalogLoader = new CatalogLoader();
         _platformService = new PlatformService();
-        _indexStore = new IndexStore(_catalogLoader, _platformService);
-        _searchService = new SearchService(_indexStore);
+        _discoveryService = new SettingsDiscoveryService();
+        _cacheService = new IndexCacheService();
+        _indexStore = new IndexStore(_catalogLoader, _platformService, _discoveryService, _cacheService);
+
+        // Initialize embedding service (with fallback word vectors, no ONNX model for now)
+        _embeddingService = new EmbeddingService(_indexStore.Items);
+
+        // Initialize hybrid search combining lexical + semantic
+        _searchService = new HybridSearchService(_indexStore, _embeddingService);
         _launchService = new LaunchService();
         _viewModel = new MainViewModel(_searchService);
 
@@ -135,6 +145,7 @@ public sealed class AppShell : IDisposable
     public void Dispose()
     {
         _hotkeyService.Dispose();
+        _searchService?.Dispose();
         if (_trayAdded)
         {
             Win32.Shell_NotifyIcon(Win32.NIM_DELETE, ref _trayData);

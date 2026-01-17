@@ -37,49 +37,88 @@
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="Padding" Value="8,6" />
+                    <Setter Property="Padding" Value="0" />
                     <Setter Property="Margin" Value="0,2" />
                     <Setter Property="CornerRadius" Value="6" />
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:SearchResult">
-                    <Grid Opacity="{x:Bind Opacity}" Padding="4,4">
+                    <Grid Opacity="{x:Bind Opacity}">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="32" />
+                            <ColumnDefinition Width="4" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <!-- Icon -->
-                        <FontIcon 
+                        <!-- Match strength accent bar -->
+                        <Border 
                             Grid.Column="0"
-                            Glyph="&#xE713;"
-                            FontSize="16"
-                            VerticalAlignment="Center"
-                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                            Background="{ThemeResource AccentFillColorDefaultBrush}"
+                            CornerRadius="2,0,0,2"
+                            Opacity="{x:Bind MatchStrength}"
+                            Visibility="{x:Bind IsStrongMatch}" />
 
-                        <!-- Name and Category -->
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
-                            <TextBlock 
-                                Text="{x:Bind Item.DisplayName}" 
-                                FontSize="14"
-                                FontWeight="SemiBold"
-                                TextTrimming="CharacterEllipsis" />
-                            <TextBlock 
-                                Text="{x:Bind Item.Category}" 
-                                FontSize="11"
-                                Opacity="0.6"
-                                TextTrimming="CharacterEllipsis" />
-                        </StackPanel>
+                        <!-- Content -->
+                        <Grid Grid.Column="1" Padding="12,8,12,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="28" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
-                        <!-- Availability indicator -->
-                        <TextBlock 
-                            Grid.Column="2"
-                            Text="{x:Bind AvailabilityText}"
-                            FontSize="11"
-                            Opacity="0.5"
-                            VerticalAlignment="Center" />
+                            <!-- Icon -->
+                            <FontIcon 
+                                Grid.Column="0"
+                                Glyph="&#xE713;"
+                                FontSize="16"
+                                VerticalAlignment="Top"
+                                Margin="0,2,0,0"
+                                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+
+                            <!-- Main content -->
+                            <StackPanel Grid.Column="1" Spacing="3">
+                                <!-- Title -->
+                                <TextBlock 
+                                    Text="{x:Bind Item.DisplayName}" 
+                                    FontSize="14"
+                                    FontWeight="SemiBold"
+                                    TextTrimming="CharacterEllipsis" />
+
+                                <!-- Breadcrumbs -->
+                                <TextBlock 
+                                    FontSize="11"
+                                    Opacity="0.7"
+                                    TextTrimming="CharacterEllipsis">
+                                    <Run Text="{x:Bind Item.Breadcrumbs}" />
+                                </TextBlock>
+
+                                <!-- Description (if available) -->
+                                <TextBlock 
+                                    Text="{x:Bind Item.Description}"
+                                    FontSize="11"
+                                    Opacity="0.5"
+                                    TextTrimming="CharacterEllipsis"
+                                    Visibility="{x:Bind HasDescription}" />
+
+                                <!-- Match hint (for synonym matches) -->
+                                <TextBlock 
+                                    Text="{x:Bind MatchHint}"
+                                    FontSize="10"
+                                    FontStyle="Italic"
+                                    Opacity="0.6"
+                                    Foreground="{ThemeResource AccentTextFillColorSecondaryBrush}"
+                                    Visibility="{x:Bind IsSynonymMatch}" />
+                            </StackPanel>
+
+                            <!-- Right side: availability or match indicator -->
+                            <StackPanel Grid.Column="2" VerticalAlignment="Center" Spacing="4">
+                                <TextBlock 
+                                    Text="{x:Bind AvailabilityText}"
+                                    FontSize="10"
+                                    Opacity="0.5"
+                                    HorizontalAlignment="Right" />
+                            </StackPanel>
+                        </Grid>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

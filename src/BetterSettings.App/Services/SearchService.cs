@@ -59,12 +59,14 @@ public sealed class SearchService
         var bestScore = 0.0;
         var matchKind = MatchKind.Token;
         var matchedOn = "display";
+        var matchedText = string.Empty;
 
         // Exact match on display name
         if (indexed.DisplayName == normalizedQuery)
         {
             bestScore = 100;
             matchKind = MatchKind.Exact;
+            matchedText = indexed.Item.DisplayName;
         }
         // Exact match on synonym
         else if (indexed.Synonyms.Contains(normalizedQuery))
@@ -72,52 +74,70 @@ public sealed class SearchService
             bestScore = 95;
             matchKind = MatchKind.SynonymExact;
             matchedOn = "synonym";
+            matchedText = FindMatchingSynonym(indexed, normalizedQuery) ?? normalizedQuery;
         }
         // Prefix match on display name
         else if (indexed.DisplayName.StartsWith(normalizedQuery))
         {
             bestScore = 90;
             matchKind = MatchKind.Prefix;
+            matchedText = indexed.Item.DisplayName;
         }
         // Prefix match on synonym
-        else if (indexed.Synonyms.Any(s => s.StartsWith(normalizedQuery)))
-        {
-            bestScore = 85;
-            matchKind = MatchKind.Prefix;
-            matchedOn = "synonym";
-        }
-        // Contains match on display name
-        else if (indexed.DisplayName.Contains(normalizedQuery))
-        {
-            bestScore = 75;
-            matchKind = MatchKind.Token;
-        }
-        // Contains match on synonym
-        else if (indexed.Synonyms.Any(s => s.Contains(normalizedQuery)))
-        {
-            bestScore = 70;
-            matchKind = MatchKind.Token;
-            matchedOn = "synonym";
-        }
-        // Token overlap
         else
         {
-            var overlap = TokenOverlap(indexed.AllTokens, normalizedQuery);
-            if (overlap > 0)
+            var prefixSynonym = indexed.Synonyms.FirstOrDefault(s => s.StartsWith(normalizedQuery));
+            if (prefixSynonym != null)
             {
-                bestScore = 60 + overlap * 8;
+                bestScore = 85;
+                matchKind = MatchKind.Prefix;
+                matchedOn = "synonym";
+                matchedText = FindOriginalSynonym(indexed.Item, prefixSynonym) ?? prefixSynonym;
+            }
+            // Contains match on display name
+            else if (indexed.DisplayName.Contains(normalizedQuery))
+            {
+                bestScore = 75;
                 matchKind = MatchKind.Token;
+                matchedText = indexed.Item.DisplayName;
+            }
+            // Contains match on synonym
+            else
+            {
+                var containsSynonym = indexed.Synonyms.FirstOrDefault(s => s.Contains(normalizedQuery));
+                if (containsSynonym != null)
+                {
+                    bestScore = 70;
+                    matchKind = MatchKind.Token;
+                    matchedOn = "synonym";
+                    matchedText = FindOriginalSynonym(indexed.Item, containsSynonym) ?? containsSynonym;
+                }
+                // Token overlap
+                else
+                {
+                    var overlap = TokenOverlap(indexed.AllTokens, normalizedQuery);
+                    if (overlap > 0)
+                    {
+                        bestScore = 60 + overlap * 8;
+                        matchKind = MatchKind.Token;
+                    }
+                }
             }
         }
 
         // Fuzzy matching for low scores
         if (bestScore < 70)
         {
-            var fuzzyScore = FuzzyScore(normalizedQuery, indexed);
+            var (fuzzyScore, fuzzyMatch) = FuzzyScoreWithMatch(normalizedQuery, indexed);
             if (fuzzyScore > bestScore)
             {
                 bestScore = fuzzyScore;
                 matchKind = MatchKind.Fuzzy;
+                if (!string.IsNullOrEmpty(fuzzyMatch) && fuzzyMatch != indexed.DisplayName)
+                {
+                    matchedOn = "synonym";
+                    matchedText = FindOriginalSynonym(indexed.Item, fuzzyMatch) ?? fuzzyMatch;
+                }
             }
         }
 
@@ -131,7 +151,10 @@ public sealed class SearchService
         if (indexed.Category.Contains(normalizedQuery))
         {
             bestScore += 4;
-            matchedOn = "category";
+            if (matchedOn == "display" && string.IsNullOrEmpty(matchedText))
+            {
+                matchedOn = "category";
+            }
         }
 
         return new SearchResult
@@ -139,8 +162,25 @@ public sealed class SearchService
             Item = indexed.Item,
             Score = Math.Max(0, bestScore),
             MatchKind = matchKind,
-            MatchedOn = matchedOn
+            MatchedOn = matchedOn,
+            MatchedText = matchedText
         };
+    }
+
+    private static string? FindMatchingSynonym(IndexedItem indexed, string normalizedQuery)
+    {
+        var idx = indexed.Synonyms.IndexOf(normalizedQuery);
+        if (idx >= 0 && idx < indexed.Item.Synonyms.Length)
+        {
+            return indexed.Item.Synonyms[idx];
+        }
+        return null;
+    }
+
+    private static string? FindOriginalSynonym(SettingItem item, string normalizedSynonym)
+    {
+        return item.Synonyms.FirstOrDefault(s =>
+            Normalize(s).Equals(normalizedSynonym, StringComparison.OrdinalIgnoreCase));
     }
 
     private static Dictionary<string, List<int>> BuildTokenIndex(IReadOnlyList<IndexedItem> items)
@@ -229,12 +269,13 @@ public sealed class SearchService
         return overlap;
     }
 
-    private static double FuzzyScore(string query, IndexedItem indexed)
+    private static (double score, string matchedText) FuzzyScoreWithMatch(string query, IndexedItem indexed)
     {
         var candidates = new List<string> { indexed.DisplayName };
         candidates.AddRange(indexed.Synonyms);
 
         var best = 0.0;
+        var bestMatch = string.Empty;
         foreach (var candidate in candidates)
         {
             var distance = DamerauLevenshteinDistance(query, candidate);
@@ -248,15 +289,16 @@ public sealed class SearchService
             if (similarity > best)
             {
                 best = similarity;
+                bestMatch = candidate;
             }
         }
 
         if (best < 0.6)
         {
-            return 0;
+            return (0, string.Empty);
         }
 
-        return 50 + best * 20;
+        return (50 + best * 20, bestMatch);
     }
 
     private static int DamerauLevenshteinDistance(string source, string target)
