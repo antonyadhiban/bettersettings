@@ -1,0 +1,259 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "system.display",
+      "displayName": "Display",
+      "synonyms": ["screen", "monitor", "resolution", "scale", "display settings"],
+      "category": "System / Display",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:display",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "system.nightlight",
+      "displayName": "Night light",
+      "synonyms": ["blue light", "night mode", "eye comfort"],
+      "category": "System / Display",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:nightlight",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "system.sound",
+      "displayName": "Sound",
+      "synonyms": ["audio", "volume", "speaker settings", "microphone settings"],
+      "category": "System / Sound",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:sound",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "system.sound.defaultoutput",
+      "displayName": "Default audio output device",
+      "synonyms": ["default audio device", "sound output", "playback device", "default speakers"],
+      "category": "System / Sound",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:sound-defaultoutputproperties",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "devices.mousetouchpad",
+      "displayName": "Mouse & touchpad",
+      "synonyms": ["mouse acceleration", "cursor speed", "touchpad", "pointer precision"],
+      "category": "Bluetooth & devices",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:mousetouchpad",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "apps.startup",
+      "displayName": "Startup apps",
+      "synonyms": ["startup programs", "auto launch apps", "start on boot"],
+      "category": "Apps / Startup",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:startupapps",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "apps.defaultapps",
+      "displayName": "Default apps",
+      "synonyms": ["default programs", "file associations", "open with"],
+      "category": "Apps",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:defaultapps",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "apps.features",
+      "displayName": "Installed apps",
+      "synonyms": ["apps & features", "uninstall app", "installed programs"],
+      "category": "Apps",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:appsfeatures",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "system.power",
+      "displayName": "Power & battery",
+      "synonyms": ["power settings", "battery usage", "battery usage per app", "sleep settings"],
+      "category": "System / Power",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:powersleep",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "system.batterysaver",
+      "displayName": "Battery saver",
+      "synonyms": ["battery mode", "power saver"],
+      "category": "System / Power",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:batterysaver",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "network.wifi",
+      "displayName": "Wi-Fi",
+      "synonyms": ["wireless", "wifi settings", "wireless networks"],
+      "category": "Network & internet",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:network-wifi",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "network.ethernet",
+      "displayName": "Ethernet",
+      "synonyms": ["wired network", "lan settings"],
+      "category": "Network & internet",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:network-ethernet",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "devices.bluetooth",
+      "displayName": "Bluetooth & devices",
+      "synonyms": ["bluetooth", "pair device", "add device"],
+      "category": "Bluetooth & devices",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:bluetooth",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "personalization.main",
+      "displayName": "Personalization",
+      "synonyms": ["background", "lock screen", "colors", "themes"],
+      "category": "Personalization",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:personalization",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "personalization.themes",
+      "displayName": "Themes",
+      "synonyms": ["theme", "appearance"],
+      "category": "Personalization",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:themes",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "personalization.colors",
+      "displayName": "Colors",
+      "synonyms": ["accent color", "dark mode", "light mode"],
+      "category": "Personalization",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:colors",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "system.taskbar",
+      "displayName": "Taskbar",
+      "synonyms": ["taskbar settings", "taskbar behavior"],
+      "category": "Personalization / Taskbar",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:taskbar",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "privacy.location",
+      "displayName": "Location privacy",
+      "synonyms": ["location access", "gps", "location services"],
+      "category": "Privacy & security",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:privacy-location",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "privacy.microphone",
+      "displayName": "Microphone privacy",
+      "synonyms": ["mic access", "microphone permissions"],
+      "category": "Privacy & security",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:privacy-microphone",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "privacy.webcam",
+      "displayName": "Camera privacy",
+      "synonyms": ["camera access", "webcam permissions"],
+      "category": "Privacy & security",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:privacy-webcam",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "update.windows",
+      "displayName": "Windows Update",
+      "synonyms": ["check for updates", "update settings"],
+      "category": "Windows Update",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:windowsupdate",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "system.about",
+      "displayName": "About your PC",
+      "synonyms": ["system info", "pc info", "device specs"],
+      "category": "System",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:about",
+      "availability": { "minBuild": 22000 }
+    },
+    {
+      "id": "controlpanel.poweroptions",
+      "displayName": "Power Options (Control Panel)",
+      "synonyms": ["power plan", "choose power plan"],
+      "category": "Control Panel",
+      "launchType": "ControlPanelCpl",
+      "launchTarget": "powercfg.cpl"
+    },
+    {
+      "id": "controlpanel.programs",
+      "displayName": "Programs and Features (Control Panel)",
+      "synonyms": ["uninstall programs", "programs and features"],
+      "category": "Control Panel",
+      "launchType": "ControlPanelCpl",
+      "launchTarget": "appwiz.cpl"
+    },
+    {
+      "id": "controlpanel.sound",
+      "displayName": "Sound (Control Panel)",
+      "synonyms": ["classic sound settings", "mmsys"],
+      "category": "Control Panel",
+      "launchType": "ControlPanelCpl",
+      "launchTarget": "mmsys.cpl"
+    },
+    {
+      "id": "admin.devicemanager",
+      "displayName": "Device Manager",
+      "synonyms": ["drivers", "hardware devices", "device manager"],
+      "category": "Admin Tools",
+      "launchType": "Msc",
+      "launchTarget": "devmgmt.msc"
+    },
+    {
+      "id": "admin.services",
+      "displayName": "Services",
+      "synonyms": ["services console", "service manager"],
+      "category": "Admin Tools",
+      "launchType": "Msc",
+      "launchTarget": "services.msc"
+    },
+    {
+      "id": "admin.diskmgmt",
+      "displayName": "Disk Management",
+      "synonyms": ["disk manager", "partitions", "volumes"],
+      "category": "Admin Tools",
+      "launchType": "Msc",
+      "launchTarget": "diskmgmt.msc"
+    },
+    {
+      "id": "admin.eventviewer",
+      "displayName": "Event Viewer",
+      "synonyms": ["event logs", "event viewer"],
+      "category": "Admin Tools",
+      "launchType": "Msc",
+      "launchTarget": "eventvwr.msc"
+    }
+  ]
+}

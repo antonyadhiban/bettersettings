@@ -1,0 +1,66 @@
+<Window
+    x:Class="BetterSettings.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="using:BetterSettings.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="Root" Background="{ThemeResource AppBackgroundBrush}" Padding="16" KeyDown="Root_KeyDown">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBox
+            x:Name="SearchBox"
+            Grid.Row="0"
+            PlaceholderText="Search settings"
+            Text="{Binding Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            FontSize="20"
+            BorderThickness="1"
+            BorderBrush="{ThemeResource AppBorderBrush}"
+            Background="{ThemeResource AppSurfaceBrush}"
+            Foreground="{ThemeResource AppTextBrush}"
+            KeyDown="Root_KeyDown" />
+
+        <ListView
+            x:Name="ResultsList"
+            Grid.Row="1"
+            Margin="0,12,0,12"
+            ItemsSource="{Binding Results}"
+            SelectedItem="{Binding SelectedResult, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:SearchResult">
+                    <Grid Opacity="{x:Bind Opacity}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <TextBlock Text="{x:Bind Item.DisplayName}" FontSize="16" />
+                            <TextBlock
+                                Text="{x:Bind AvailabilityText}"
+                                Foreground="{ThemeResource AppMutedTextBrush}"
+                                FontSize="12"
+                                VerticalAlignment="Center" />
+                        </StackPanel>
+                        <TextBlock
+                            Grid.Row="1"
+                            Text="{x:Bind Item.Category}"
+                            Foreground="{ThemeResource AppMutedTextBrush}"
+                            FontSize="12" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock
+            Grid.Row="2"
+            Text="{Binding StatusMessage}"
+            Foreground="{ThemeResource AppAccentBrush}"
+            FontSize="12" />
+    </Grid>
+</Window>

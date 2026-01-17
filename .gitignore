@@ -1,0 +1,65 @@
+# Build results
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+ARM64/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Generated files
+**/Generated/
+**/*.g.cs
+**/*.g.i.cs
+
+# Publish output
+publish/
+
+# App packages
+AppPackages/
+BundleArtifacts/
+
+# Windows Store
+*.appx
+*.appxbundle
+*.appxupload
+
+# Test results
+TestResults/
+
+# NCrunch
+*.ncrunch*
+_NCrunch_*
+
+# JetBrains Rider
+*.sln.iml

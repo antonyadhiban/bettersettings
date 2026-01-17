@@ -1,0 +1,645 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "system.display",
+      "displayName": "Display",
+      "synonyms": ["screen", "monitor", "resolution", "scale", "display settings", "brightness"],
+      "category": "System",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:display"
+    },
+    {
+      "id": "system.nightlight",
+      "displayName": "Night light",
+      "synonyms": ["blue light", "night mode", "eye comfort", "flux"],
+      "category": "System / Display",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:nightlight"
+    },
+    {
+      "id": "system.sound",
+      "displayName": "Sound",
+      "synonyms": ["audio", "volume", "speaker", "microphone", "speakers"],
+      "category": "System",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:sound"
+    },
+    {
+      "id": "system.notifications",
+      "displayName": "Notifications",
+      "synonyms": ["alerts", "notification settings", "do not disturb", "focus assist"],
+      "category": "System",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:notifications"
+    },
+    {
+      "id": "system.focusassist",
+      "displayName": "Focus assist",
+      "synonyms": ["do not disturb", "quiet hours", "concentration mode"],
+      "category": "System",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:quiethours"
+    },
+    {
+      "id": "system.power",
+      "displayName": "Power & battery",
+      "synonyms": ["power settings", "battery usage", "sleep settings", "hibernate", "screen timeout"],
+      "category": "System",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:powersleep"
+    },
+    {
+      "id": "system.storage",
+      "displayName": "Storage",
+      "synonyms": ["disk space", "storage sense", "free up space", "disk cleanup"],
+      "category": "System",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:storagesense"
+    },
+    {
+      "id": "system.multitasking",
+      "displayName": "Multitasking",
+      "synonyms": ["snap", "virtual desktops", "alt tab", "snap assist"],
+      "category": "System",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:multitasking"
+    },
+    {
+      "id": "system.clipboard",
+      "displayName": "Clipboard",
+      "synonyms": ["clipboard history", "copy paste", "sync clipboard"],
+      "category": "System",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:clipboard"
+    },
+    {
+      "id": "system.about",
+      "displayName": "About your PC",
+      "synonyms": ["system info", "pc info", "device specs", "computer name", "rename pc"],
+      "category": "System",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:about"
+    },
+    {
+      "id": "devices.bluetooth",
+      "displayName": "Bluetooth & devices",
+      "synonyms": ["bluetooth", "pair device", "add device", "wireless"],
+      "category": "Devices",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:bluetooth"
+    },
+    {
+      "id": "devices.printers",
+      "displayName": "Printers & scanners",
+      "synonyms": ["printer", "scanner", "add printer"],
+      "category": "Devices",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:printers"
+    },
+    {
+      "id": "devices.mouse",
+      "displayName": "Mouse",
+      "synonyms": ["mouse settings", "cursor speed", "pointer", "scroll speed"],
+      "category": "Devices",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:mousetouchpad"
+    },
+    {
+      "id": "devices.touchpad",
+      "displayName": "Touchpad",
+      "synonyms": ["trackpad", "gestures", "touchpad settings"],
+      "category": "Devices",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:devices-touchpad"
+    },
+    {
+      "id": "devices.typing",
+      "displayName": "Typing",
+      "synonyms": ["keyboard", "autocorrect", "spell check", "text suggestions"],
+      "category": "Devices",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:typing"
+    },
+    {
+      "id": "devices.usb",
+      "displayName": "USB",
+      "synonyms": ["usb devices", "usb settings"],
+      "category": "Devices",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:usb"
+    },
+    {
+      "id": "network.status",
+      "displayName": "Network status",
+      "synonyms": ["network", "internet", "connection status"],
+      "category": "Network",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:network-status"
+    },
+    {
+      "id": "network.wifi",
+      "displayName": "Wi-Fi",
+      "synonyms": ["wireless", "wifi settings", "wireless networks", "connect wifi"],
+      "category": "Network",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:network-wifi"
+    },
+    {
+      "id": "network.ethernet",
+      "displayName": "Ethernet",
+      "synonyms": ["wired network", "lan settings", "wired connection"],
+      "category": "Network",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:network-ethernet"
+    },
+    {
+      "id": "network.vpn",
+      "displayName": "VPN",
+      "synonyms": ["virtual private network", "vpn settings", "add vpn"],
+      "category": "Network",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:network-vpn"
+    },
+    {
+      "id": "network.proxy",
+      "displayName": "Proxy",
+      "synonyms": ["proxy settings", "proxy server"],
+      "category": "Network",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:network-proxy"
+    },
+    {
+      "id": "personalization.background",
+      "displayName": "Background",
+      "synonyms": ["wallpaper", "desktop background", "desktop picture"],
+      "category": "Personalization",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:personalization-background"
+    },
+    {
+      "id": "personalization.colors",
+      "displayName": "Colors",
+      "synonyms": ["accent color", "dark mode", "light mode", "theme color"],
+      "category": "Personalization",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:colors"
+    },
+    {
+      "id": "personalization.themes",
+      "displayName": "Themes",
+      "synonyms": ["theme", "appearance", "sounds", "icons"],
+      "category": "Personalization",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:themes"
+    },
+    {
+      "id": "personalization.lockscreen",
+      "displayName": "Lock screen",
+      "synonyms": ["lock screen background", "lock screen settings"],
+      "category": "Personalization",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:lockscreen"
+    },
+    {
+      "id": "personalization.start",
+      "displayName": "Start menu",
+      "synonyms": ["start settings", "start menu layout", "pinned apps"],
+      "category": "Personalization",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:personalization-start"
+    },
+    {
+      "id": "personalization.taskbar",
+      "displayName": "Taskbar",
+      "synonyms": ["taskbar settings", "taskbar icons", "system tray"],
+      "category": "Personalization",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:taskbar"
+    },
+    {
+      "id": "personalization.fonts",
+      "displayName": "Fonts",
+      "synonyms": ["font settings", "install fonts", "manage fonts"],
+      "category": "Personalization",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:fonts"
+    },
+    {
+      "id": "apps.installed",
+      "displayName": "Installed apps",
+      "synonyms": ["apps & features", "uninstall app", "installed programs", "remove app"],
+      "category": "Apps",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:appsfeatures"
+    },
+    {
+      "id": "apps.default",
+      "displayName": "Default apps",
+      "synonyms": ["default programs", "file associations", "open with", "default browser"],
+      "category": "Apps",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:defaultapps"
+    },
+    {
+      "id": "apps.startup",
+      "displayName": "Startup apps",
+      "synonyms": ["startup programs", "auto launch apps", "start on boot", "autostart"],
+      "category": "Apps",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:startupapps"
+    },
+    {
+      "id": "apps.optionalfeatures",
+      "displayName": "Optional features",
+      "synonyms": ["windows features", "add features", "rsat"],
+      "category": "Apps",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:optionalfeatures"
+    },
+    {
+      "id": "accounts.yourinfo",
+      "displayName": "Your info",
+      "synonyms": ["account", "profile picture", "user account"],
+      "category": "Accounts",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:yourinfo"
+    },
+    {
+      "id": "accounts.email",
+      "displayName": "Email & accounts",
+      "synonyms": ["email accounts", "add account", "microsoft account"],
+      "category": "Accounts",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:emailandaccounts"
+    },
+    {
+      "id": "accounts.signin",
+      "displayName": "Sign-in options",
+      "synonyms": ["password", "pin", "windows hello", "fingerprint", "face recognition"],
+      "category": "Accounts",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:signinoptions"
+    },
+    {
+      "id": "accounts.family",
+      "displayName": "Family & other users",
+      "synonyms": ["add user", "family safety", "other users", "child account"],
+      "category": "Accounts",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:otherusers"
+    },
+    {
+      "id": "accounts.sync",
+      "displayName": "Windows backup",
+      "synonyms": ["sync settings", "backup", "onedrive backup"],
+      "category": "Accounts",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:sync"
+    },
+    {
+      "id": "time.datetime",
+      "displayName": "Date & time",
+      "synonyms": ["time zone", "clock", "date settings", "time settings"],
+      "category": "Time & language",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:dateandtime"
+    },
+    {
+      "id": "time.language",
+      "displayName": "Language & region",
+      "synonyms": ["language settings", "display language", "region", "keyboard language"],
+      "category": "Time & language",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:regionlanguage"
+    },
+    {
+      "id": "time.speech",
+      "displayName": "Speech",
+      "synonyms": ["voice recognition", "speech settings", "dictation"],
+      "category": "Time & language",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:speech"
+    },
+    {
+      "id": "gaming.gamebar",
+      "displayName": "Game Bar",
+      "synonyms": ["xbox game bar", "game recording", "game capture"],
+      "category": "Gaming",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:gaming-gamebar"
+    },
+    {
+      "id": "gaming.gamemode",
+      "displayName": "Game Mode",
+      "synonyms": ["gaming mode", "game performance"],
+      "category": "Gaming",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:gaming-gamemode"
+    },
+    {
+      "id": "accessibility.textsize",
+      "displayName": "Text size",
+      "synonyms": ["font size", "larger text", "make text bigger"],
+      "category": "Accessibility",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:easeofaccess-display"
+    },
+    {
+      "id": "accessibility.visualeffects",
+      "displayName": "Visual effects",
+      "synonyms": ["animations", "transparency", "scroll bar"],
+      "category": "Accessibility",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:easeofaccess-visualeffects"
+    },
+    {
+      "id": "accessibility.mousepointer",
+      "displayName": "Mouse pointer and touch",
+      "synonyms": ["cursor size", "pointer size", "touch indicator"],
+      "category": "Accessibility",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:easeofaccess-mousepointer"
+    },
+    {
+      "id": "accessibility.narrator",
+      "displayName": "Narrator",
+      "synonyms": ["screen reader", "text to speech", "narrator settings"],
+      "category": "Accessibility",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:easeofaccess-narrator"
+    },
+    {
+      "id": "accessibility.magnifier",
+      "displayName": "Magnifier",
+      "synonyms": ["zoom", "magnify", "screen magnifier"],
+      "category": "Accessibility",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:easeofaccess-magnifier"
+    },
+    {
+      "id": "accessibility.colorfilters",
+      "displayName": "Color filters",
+      "synonyms": ["colorblind", "grayscale", "color blind mode"],
+      "category": "Accessibility",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:easeofaccess-colorfilter"
+    },
+    {
+      "id": "accessibility.highcontrast",
+      "displayName": "Contrast themes",
+      "synonyms": ["high contrast", "contrast mode"],
+      "category": "Accessibility",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:easeofaccess-highcontrast"
+    },
+    {
+      "id": "accessibility.keyboard",
+      "displayName": "Keyboard accessibility",
+      "synonyms": ["sticky keys", "filter keys", "toggle keys", "on-screen keyboard"],
+      "category": "Accessibility",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:easeofaccess-keyboard"
+    },
+    {
+      "id": "accessibility.mouse",
+      "displayName": "Mouse accessibility",
+      "synonyms": ["mouse keys", "keyboard mouse"],
+      "category": "Accessibility",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:easeofaccess-mouse"
+    },
+    {
+      "id": "privacy.general",
+      "displayName": "General privacy",
+      "synonyms": ["privacy settings", "advertising id", "tracking"],
+      "category": "Privacy",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:privacy-general"
+    },
+    {
+      "id": "privacy.location",
+      "displayName": "Location",
+      "synonyms": ["location access", "gps", "location services", "location privacy"],
+      "category": "Privacy",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:privacy-location"
+    },
+    {
+      "id": "privacy.camera",
+      "displayName": "Camera",
+      "synonyms": ["camera access", "webcam", "camera privacy"],
+      "category": "Privacy",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:privacy-webcam"
+    },
+    {
+      "id": "privacy.microphone",
+      "displayName": "Microphone",
+      "synonyms": ["mic access", "microphone permissions", "mic privacy"],
+      "category": "Privacy",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:privacy-microphone"
+    },
+    {
+      "id": "privacy.notifications",
+      "displayName": "Notifications privacy",
+      "synonyms": ["notification access"],
+      "category": "Privacy",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:privacy-notifications"
+    },
+    {
+      "id": "privacy.activityhistory",
+      "displayName": "Activity history",
+      "synonyms": ["timeline", "activity tracking"],
+      "category": "Privacy",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:privacy-activityhistory"
+    },
+    {
+      "id": "security.windowssecurity",
+      "displayName": "Windows Security",
+      "synonyms": ["defender", "antivirus", "virus protection", "security center"],
+      "category": "Security",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:windowsdefender"
+    },
+    {
+      "id": "security.findmydevice",
+      "displayName": "Find my device",
+      "synonyms": ["locate device", "track device"],
+      "category": "Security",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:findmydevice"
+    },
+    {
+      "id": "security.developermode",
+      "displayName": "For developers",
+      "synonyms": ["developer mode", "developer settings", "sideload apps"],
+      "category": "Security",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:developers"
+    },
+    {
+      "id": "update.windowsupdate",
+      "displayName": "Windows Update",
+      "synonyms": ["check for updates", "update settings", "install updates"],
+      "category": "Update",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:windowsupdate"
+    },
+    {
+      "id": "update.updatehistory",
+      "displayName": "Update history",
+      "synonyms": ["installed updates", "update log"],
+      "category": "Update",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:windowsupdate-history"
+    },
+    {
+      "id": "update.advancedoptions",
+      "displayName": "Advanced update options",
+      "synonyms": ["update advanced", "delivery optimization", "active hours"],
+      "category": "Update",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:windowsupdate-options"
+    },
+    {
+      "id": "update.recovery",
+      "displayName": "Recovery",
+      "synonyms": ["reset pc", "go back", "advanced startup", "reset this pc"],
+      "category": "Update",
+      "launchType": "MsSettings",
+      "launchTarget": "ms-settings:recovery"
+    },
+    {
+      "id": "controlpanel.poweroptions",
+      "displayName": "Power Options (Control Panel)",
+      "synonyms": ["power plan", "choose power plan", "high performance"],
+      "category": "Control Panel",
+      "launchType": "ControlPanelCpl",
+      "launchTarget": "powercfg.cpl"
+    },
+    {
+      "id": "controlpanel.programs",
+      "displayName": "Programs and Features",
+      "synonyms": ["uninstall programs", "add remove programs"],
+      "category": "Control Panel",
+      "launchType": "ControlPanelCpl",
+      "launchTarget": "appwiz.cpl"
+    },
+    {
+      "id": "controlpanel.sound",
+      "displayName": "Sound (Control Panel)",
+      "synonyms": ["classic sound settings", "playback devices", "recording devices"],
+      "category": "Control Panel",
+      "launchType": "ControlPanelCpl",
+      "launchTarget": "mmsys.cpl"
+    },
+    {
+      "id": "controlpanel.network",
+      "displayName": "Network Connections",
+      "synonyms": ["network adapters", "ethernet properties", "wifi properties"],
+      "category": "Control Panel",
+      "launchType": "ControlPanelCpl",
+      "launchTarget": "ncpa.cpl"
+    },
+    {
+      "id": "controlpanel.system",
+      "displayName": "System Properties",
+      "synonyms": ["advanced system settings", "environment variables", "remote desktop"],
+      "category": "Control Panel",
+      "launchType": "ControlPanelCpl",
+      "launchTarget": "sysdm.cpl"
+    },
+    {
+      "id": "admin.devicemanager",
+      "displayName": "Device Manager",
+      "synonyms": ["drivers", "hardware devices", "update driver"],
+      "category": "Admin Tools",
+      "launchType": "Msc",
+      "launchTarget": "devmgmt.msc"
+    },
+    {
+      "id": "admin.services",
+      "displayName": "Services",
+      "synonyms": ["services console", "service manager", "windows services"],
+      "category": "Admin Tools",
+      "launchType": "Msc",
+      "launchTarget": "services.msc"
+    },
+    {
+      "id": "admin.diskmgmt",
+      "displayName": "Disk Management",
+      "synonyms": ["disk manager", "partitions", "volumes", "format drive"],
+      "category": "Admin Tools",
+      "launchType": "Msc",
+      "launchTarget": "diskmgmt.msc"
+    },
+    {
+      "id": "admin.eventviewer",
+      "displayName": "Event Viewer",
+      "synonyms": ["event logs", "windows logs", "application logs"],
+      "category": "Admin Tools",
+      "launchType": "Msc",
+      "launchTarget": "eventvwr.msc"
+    },
+    {
+      "id": "admin.taskscheduler",
+      "displayName": "Task Scheduler",
+      "synonyms": ["scheduled tasks", "automation", "schedule task"],
+      "category": "Admin Tools",
+      "launchType": "Msc",
+      "launchTarget": "taskschd.msc"
+    },
+    {
+      "id": "admin.compmgmt",
+      "displayName": "Computer Management",
+      "synonyms": ["computer manager", "local users"],
+      "category": "Admin Tools",
+      "launchType": "Msc",
+      "launchTarget": "compmgmt.msc"
+    },
+    {
+      "id": "admin.gpedit",
+      "displayName": "Group Policy Editor",
+      "synonyms": ["gpedit", "local group policy", "policy editor"],
+      "category": "Admin Tools",
+      "launchType": "Msc",
+      "launchTarget": "gpedit.msc"
+    },
+    {
+      "id": "admin.regedit",
+      "displayName": "Registry Editor",
+      "synonyms": ["regedit", "windows registry"],
+      "category": "Admin Tools",
+      "launchType": "Exe",
+      "launchTarget": "regedit.exe"
+    },
+    {
+      "id": "admin.taskmanager",
+      "displayName": "Task Manager",
+      "synonyms": ["taskmgr", "processes", "performance", "end task"],
+      "category": "Admin Tools",
+      "launchType": "Exe",
+      "launchTarget": "taskmgr.exe"
+    },
+    {
+      "id": "admin.msconfig",
+      "displayName": "System Configuration",
+      "synonyms": ["msconfig", "boot options", "safe mode"],
+      "category": "Admin Tools",
+      "launchType": "Exe",
+      "launchTarget": "msconfig.exe"
+    },
+    {
+      "id": "admin.resmon",
+      "displayName": "Resource Monitor",
+      "synonyms": ["resource monitor", "resmon", "disk activity", "network activity"],
+      "category": "Admin Tools",
+      "launchType": "Exe",
+      "launchTarget": "resmon.exe"
+    }
+  ]
+}

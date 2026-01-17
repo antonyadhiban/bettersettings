@@ -1,0 +1,10 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="AppBackgroundBrush" Color="{ThemeResource SystemControlBackgroundAltHighColor}" />
+    <SolidColorBrush x:Key="AppSurfaceBrush" Color="{ThemeResource SystemControlBackgroundChromeLowColor}" />
+    <SolidColorBrush x:Key="AppBorderBrush" Color="{ThemeResource SystemControlForegroundBaseLowColor}" />
+    <SolidColorBrush x:Key="AppTextBrush" Color="{ThemeResource SystemControlForegroundBaseHighColor}" />
+    <SolidColorBrush x:Key="AppMutedTextBrush" Color="{ThemeResource SystemControlForegroundBaseMediumColor}" />
+    <SolidColorBrush x:Key="AppAccentBrush" Color="{ThemeResource SystemAccentColor}" />
+</ResourceDictionary>

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BetterSettings.App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "BetterSettings.App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
